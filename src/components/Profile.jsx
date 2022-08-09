@@ -1,7 +1,8 @@
 import React from "react";
+import classes from './Profile.module.css';
 
 function Profile() {
-    return <div className='content'>
+    return <div className={classes.content}>
         <div>
             <img
                 src="https://wowslider.com/sliders/demo-18/data1/images/shanghai.jpg"/>
@@ -14,12 +15,12 @@ function Profile() {
             <div>
                 New post
             </div>
-            <div>
-                <div>Post 1</div>
-                <div>Post 2</div>
-                <div>Post 3</div>
-                <div>Post 4</div>
-                <div>Post 5</div>
+            <div className={classes.posts}>
+                <div className={classes.item}>Post 1</div>
+                <div className={classes.item}>Post 2</div>
+                <div className={classes.item}>Post 3</div>
+                <div className={classes.item}>Post 4</div>
+                <div className={classes.item}>Post 5</div>
             </div>
         </div>
     </div>
