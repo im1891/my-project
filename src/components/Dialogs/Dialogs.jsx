@@ -1,27 +1,26 @@
 import React from "react";
 import classes from './Dialogs.module.css';
+import Dialog from "./Dialog/Dialog";
 
+function Message(props) {
+    return (
+        <div className="message">{props.text}</div>
+    )
+}
 function Dialogs(props) {
     return (
         <div className={classes.dialogs}>
             <div className={classes.dialogItems}>
-                <div className='dialog'>
-                    Anya
-                </div>
-                <div className='dialog'>
-                    Pasha
-                </div>
-                <div className='dialog'>
-                    Dima
-                </div>
-                <div className='dialog'>
-                    Viktor
-                </div>
+                <Dialog name='Anya' id='1'/>
+                <Dialog name='Pasha' id='2'/>
+                <Dialog name='Sasha' id='3'  />
             </div>
+
             <div className={classes.messages}>
-                <div className="message">Hello</div>
-                <div className="message">How are you?</div>
-                <div className="message">What are you doing?</div>
+
+                <Message text='Hello'/>
+                <Message text='How are you?'/>
+                <Message text='What are yoy doing?'/>
             </div>
         </div>
     )

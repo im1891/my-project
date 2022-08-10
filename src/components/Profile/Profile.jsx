@@ -1,17 +1,12 @@
 import React from "react";
 import classes from './Profile.module.css';
 import MyPosts from "./MyPosts/MyPosts";
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
-function Profile() {
+function Profile(props) {
     return (
         <div>
-            <div>
-                <img
-                    src="https://wowslider.com/sliders/demo-18/data1/images/shanghai.jpg"/>
-            </div>
-            <div>
-                ava + description
-            </div>
+            <ProfileInfo/>
             <MyPosts/>
         </div>)
 }

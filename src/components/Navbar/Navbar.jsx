@@ -5,12 +5,12 @@ import {NavLink} from "react-router-dom";
 function Navbar() {
     return <nav className={classes.nav}>
         <div className={classes.item}>
-            <NavLink to='/profile'
+            <NavLink exact to='/profile'
                      className={({isActive}) => isActive ? `${classes.active}` : undefined}>Profile</NavLink>
         </div>
 
         <div className={classes.item}>
-            <NavLink to='/dialogs'
+            <NavLink exact to='/dialogs'
                      className={({isActive}) => isActive ? `${classes.active}` : undefined}>Messages</NavLink>
         </div>
 
