@@ -3,10 +3,14 @@
     background-color: cyan;
 }
 
-.item {
+
+
+.item a {
     color: white;
+
+
 }
 
-.active {
-    color: yellow;
+.item a.active {
+    color: gold;
 }
