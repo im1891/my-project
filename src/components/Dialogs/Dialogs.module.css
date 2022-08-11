@@ -7,9 +7,16 @@
 .dialogItems {
     grid-area: d;
     padding: 10px;
+
+}
+
+.dialogItems a {
+    text-decoration: none;
+    color: black;
 }
 
 .messages {
     grid-area: m;
     padding: 10px;
+    color: black;
 }

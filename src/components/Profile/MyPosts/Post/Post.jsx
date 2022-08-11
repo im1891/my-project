@@ -6,7 +6,7 @@ function Post(props) {
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3oR06hyCdxS0tijklIugprdL_yHhVPZ3wuw&usqp=CAU"/>
         {props.message}
         <div>
-            <span>like</span>
+            <span>like {props.likesCount}</span>
         </div>
 
     </div>
