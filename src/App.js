@@ -14,8 +14,10 @@ function App(props) {
             <Navbar/>
             <div className='app-wrapper-content'>
                 <Routes>
-                    <Route excat path='/profile' element={<Profile/>}/>
-                    <Route exact path='/dialogs' element={<Dialogs/>}/>
+                    <Route excat path='/profile'
+                           element={<Profile state={props.state.profilePage} />}/>
+                    <Route exact path='/dialogs'
+                           element={<Dialogs state={props.state.dialogsPage}/>}/>
                 </Routes>
             </div>
         </div>
