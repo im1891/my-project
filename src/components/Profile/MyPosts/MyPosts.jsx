@@ -24,7 +24,7 @@ function MyPosts(props) {
             <div>
                 <div>
                     <textarea ref={postElement} value={props.profilePage.newPostText} onInput={typingPostMessage}
-                              placeholder='Введите текст поста' />
+                              placeholder='Введите текст поста'/>
                 </div>
                 <div>
                     <button onClick={addPost}>Add post</button>

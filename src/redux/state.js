@@ -1,4 +1,9 @@
-import {rerenderEntireTree} from "../render";
+let rerenderEntireTree = () => {
+    console.log('State was changed');
+}
+
+
+
 
 let state = {
     profilePage: {
@@ -21,30 +26,49 @@ let state = {
             {message: 'How are you?', id: 2},
             {message: 'What are you doing?', id: 3},
         ],
+
+        newMessageText: '',
     },
 
 
 }
 
-export let typingPostText = (text) => {
-    state.profilePage.newPostText = text;
-    rerenderEntireTree(state);
-}
+    export const subscribe = (observer) => {
+        rerenderEntireTree = observer;
+    }
+    export let typingPostText = (text) => {
+        state.profilePage.newPostText = text;
+        rerenderEntireTree(state);
+    }
 
-export let addPostText = (postMessage) => {
-    let newPost = {
-        id: state.profilePage.posts[state.profilePage.posts.length - 1].id + 1,
-        message: state.profilePage.newPostText,
-        likesCount: 0
-    };
-    state.profilePage.posts.push(newPost);
-    state.profilePage.newPostText = '';
-    rerenderEntireTree(state);
+    export let addPostText = (postMessage) => {
+        let newPost = {
+            id: state.profilePage.posts[state.profilePage.posts.length - 1].id + 1,
+            message: state.profilePage.newPostText,
+            likesCount: 0
+        };
+        state.profilePage.posts.push(newPost);
+        state.profilePage.newPostText = '';
+        rerenderEntireTree(state);
 
 
-}
-console.log(state.profilePage.newPostText);
+    }
 
-export default state;
+    export let typingMessageText = (text) => {
+        state.dialogsPage.newMessageText = text;
+        rerenderEntireTree(state);
+    }
 
-window.state = state;
+    export let addNewMessageText = () => {
+        let newMessage = {
+            message: state.dialogsPage.newMessageText,
+            id: state.dialogsPage.messages[state.dialogsPage.messages.length - 1].id + 1
+        };
+        state.dialogsPage.messages.push(newMessage);
+        state.dialogsPage.newMessageText = '';
+        rerenderEntireTree(state);
+    }
+
+    export default state;
+
+    window.state = state;
