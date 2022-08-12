@@ -15,7 +15,9 @@ function App(props) {
             <div className='app-wrapper-content'>
                 <Routes>
                     <Route excat path='/profile'
-                           element={<Profile state={props.state.profilePage} />}/>
+                           element={<Profile profilePage={props.state.profilePage}
+                                             addPostText={props.addPostText}
+                                             typingPostText={props.typingPostText}/>}/>
                     <Route exact path='/dialogs'
                            element={<Dialogs state={props.state.dialogsPage}/>}/>
                 </Routes>
