@@ -1,7 +1,6 @@
-const TYPING_POST_TEXT= 'TYPING-POST-TEXT';
-const ADD_POST_TEXT= 'ADD-POST-TEXT';
-const TYPING_MESSAGE_TEXT= 'TYPING-MESSAGE-TEXT';
-const ADD_MESSAGE_TEXT= 'ADD-MESSAGE-TEXT';
+import dialogsPageReducer from "./dialogsPage-reducer";
+import profilePageReducer from "./profilePage-reducer";
+
 
 
 let store = {
@@ -47,44 +46,16 @@ let store = {
 
     dispatch(action) {
 
-        if (action.type === TYPING_POST_TEXT) {
-            this._state.profilePage.newPostText = action.text;
-            this._callSubscriber(this._state);
-        } else if (action.type === ADD_POST_TEXT) {
-            let newPost = {
-                id: this._state.profilePage.posts[this._state.profilePage.posts.length - 1].id + 1,
-                message: this._state.profilePage.newPostText,
-                likesCount: 0
-            };
-            this._state.profilePage.posts.push(newPost);
-            this._state.profilePage.newPostText = '';
-            this._callSubscriber(this._state);
-        } else if (action.type === TYPING_MESSAGE_TEXT) {
-            this._state.dialogsPage.newMessageText = action.text;
-            this._callSubscriber(this._state);
-        } else if (action.type === ADD_MESSAGE_TEXT) {
-            let newMessage = {
-                message: this._state.dialogsPage.newMessageText,
-                id: this._state.dialogsPage.messages[this._state.dialogsPage.messages.length - 1].id + 1
-            };
-            this._state.dialogsPage.messages.push(newMessage);
-            this._state.dialogsPage.newMessageText = '';
-            this._callSubscriber(this._state);
-        }
+        this._state.profilePage = profilePageReducer(action, this._state.profilePage);
+        this._state.dialogsPage = dialogsPageReducer(action, this._state.dialogsPage);
 
+        this._callSubscriber(this._state);
     }
+
 }
+    export default store;
 
 
-export default store;
-
-export const typingPostTextAC = postText =>  ({type: TYPING_POST_TEXT, text: postText});
-
-export const addPostAC = () => ({type: ADD_POST_TEXT});
-
-export const typingMessageTextAC = messageText => ({type: TYPING_MESSAGE_TEXT , text: messageText});
-
-export const addMessageAC = () => ({type: ADD_MESSAGE_TEXT});
 
 
-window.store = store;
+    window.store = store;

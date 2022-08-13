@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./MyPosts.module.css";
 import Post from "./Post/Post";
-import {addPostAC, typingPostTextAC} from "../../../redux/store";
+import {addPostAC, updatePostTextAC} from "../../../redux/profilePage-reducer";
 
 
 function MyPosts(props) {
@@ -11,7 +11,7 @@ function MyPosts(props) {
     let typingPostText = () => {
         let postText = postElement.current.value;
 
-        props.dispatch(typingPostTextAC(postText));
+        props.dispatch(updatePostTextAC(postText));
     }
     let addPost = () => {
 

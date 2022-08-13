@@ -2,21 +2,21 @@ import React from "react";
 import classes from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem.jsx";
 import Message from "./Message/Message";
-import {addMessageAC, typingMessageTextAC} from "../../redux/store";
+import {sendMessageAC, updateMessageTextAC} from "../../redux/dialogsPage-reducer";
 
 
 function Dialogs(props) {
 
     let messageElement = React.createRef();
 
-    let typingMessageText = () => {
+    let typingMessageText = (event) => {
 
-        let messageText = messageElement.current.value;
-        props.dispatch(typingMessageTextAC(messageText));
+        let messageText = event.currentTarget.value ;
+        props.dispatch(updateMessageTextAC(messageText));
     }
 
-    let addMessage = () => {
-        props.dispatch(addMessageAC());
+    let onSendMessageClick = () => {
+        props.dispatch(sendMessageAC());
     }
 
     let dialogsElements = props.dialogsPage.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>);
@@ -30,14 +30,16 @@ function Dialogs(props) {
             </div>
 
             <div className={classes.messages}>
-                {messagesElements}
+                <div>{messagesElements}</div>
                 <div>
+                    <div>
                     <textarea placeHolder='Введите сообщение' value={props.dialogsPage.newMessageText}
                               onInput={typingMessageText}
                               ref={messageElement}/>
-                </div>
-                <div>
-                    <button onClick={addMessage}>Add message</button>
+                    </div>
+                    <div>
+                        <button onClick={onSendMessageClick}>Send</button>
+                    </div>
                 </div>
             </div>
         </div>
