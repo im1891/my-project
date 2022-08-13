@@ -5,11 +5,11 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 
 function Profile(props) {
+
     return (
         <div>
             <ProfileInfo/>
-            <MyPosts profilePage={props.profilePage} addPostText={props.addPostText}
-                     typingPostText={props.typingPostText}/>
+            <MyPosts profilePage={props.profilePage} dispatch={props.dispatch}/>
         </div>)
 }
 

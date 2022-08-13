@@ -2,6 +2,7 @@ import React from "react";
 import classes from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem.jsx";
 import Message from "./Message/Message";
+import {addMessageAC, typingMessageTextAC} from "../../redux/store";
 
 
 function Dialogs(props) {
@@ -11,11 +12,11 @@ function Dialogs(props) {
     let typingMessageText = () => {
 
         let messageText = messageElement.current.value;
-        props.typingMessageText(messageText);
+        props.dispatch(typingMessageTextAC(messageText));
     }
 
     let addMessage = () => {
-        props.addNewMessageText();
+        props.dispatch(addMessageAC());
     }
 
     let dialogsElements = props.dialogsPage.dialogs.map(d => <DialogItem name={d.name} id={d.id}/>);

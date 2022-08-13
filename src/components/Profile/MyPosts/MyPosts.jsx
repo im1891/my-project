@@ -1,18 +1,22 @@
 import React from "react";
 import classes from "./MyPosts.module.css";
 import Post from "./Post/Post";
+import {addPostAC, typingPostTextAC} from "../../../redux/store";
+
 
 function MyPosts(props) {
 
     let postElement = React.createRef();
 
-    let typingPostMessage = () => {
+    let typingPostText = () => {
         let postText = postElement.current.value;
-        props.typingPostText(postText);
+
+        props.dispatch(typingPostTextAC(postText));
     }
     let addPost = () => {
 
-        props.addPostText();
+
+        props.dispatch(addPostAC());
 
     }
 
@@ -23,7 +27,7 @@ function MyPosts(props) {
             <h3>My posts</h3>
             <div>
                 <div>
-                    <textarea ref={postElement} value={props.profilePage.newPostText} onInput={typingPostMessage}
+                    <textarea ref={postElement} value={props.profilePage.newPostText} onInput={typingPostText}
                               placeholder='Введите текст поста'/>
                 </div>
                 <div>
